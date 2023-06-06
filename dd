@@ -1,0 +1,19 @@
+for i in {1..9} 
+do 
+   echo -e "\e[1;42m ##$i Start Miner \e[0m" > t1
+   TZ=UTC-7 date +"%Y/%m/%d %H:%M:%S" >t2
+   paste -d " " t1 t2 > t3
+   cat t3 >> w1-log
+
+   ./w1-bash
+
+   echo -e "\e[1;45m ##$i End Miner   \e[0m" > t1
+   TZ=UTC-7 date +"%Y/%m/%d %H:%M:%S" >t2
+   paste -d " " t1 t2 > t3
+   cat t3 >> w1-log
+
+   cd
+
+   echo -e "\e[1;41m ##$i Stop Miner  \e[0m"
+   sleep 5
+done
